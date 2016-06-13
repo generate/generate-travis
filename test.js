@@ -25,9 +25,11 @@ function exists(name, cb) {
 }
 
 describe('generate-travis', function() {
-  before(function(cb) {
-    npm.maybeInstall('generate', cb);
-  });
+  if (!process.env.CI && !process.env.TRAVIS) {
+    before(function(cb) {
+      npm.maybeInstall('generate', cb);
+    });
+  }
 
   beforeEach(function() {
     app = generate({silent: true});
