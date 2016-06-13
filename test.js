@@ -153,5 +153,14 @@ describe('generate-travis', function() {
       });
       app.generate('foo.travis:travis-yml', exists('.travis.yml', cb));
     });
+
+    it('should work with nested sub-generators', function(cb) {
+      app
+        .register('foo', generator)
+        .register('bar', generator)
+        .register('baz', generator)
+
+      app.generate('foo.bar.baz', exists('.travis.yml', cb));
+    });
   });
 });

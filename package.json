@@ -49,8 +49,8 @@
     ],
     "related": {
       "list": [
-        "generate-file",
         "generate",
+        "generate-file",
         "generate-git"
       ]
     },
