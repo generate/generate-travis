@@ -94,17 +94,19 @@ describe('generate-travis', function() {
     });
   });
 
-  describe('generator (CLI)', function() {
-    it('should run the default task using the `generate-travis` name', function(cb) {
-      app.use(generator);
-      app.generate('generate-travis', exists('.travis.yml', cb));
-    });
+  if (!process.env.CI && !process.env.TRAVIS) {
+    describe('generator (CLI)', function() {
+      it('should run the default task using the `generate-travis` name', function(cb) {
+        app.use(generator);
+        app.generate('generate-travis', exists('.travis.yml', cb));
+      });
 
-    it('should run the default task using the `travis` generator alias', function(cb) {
-      app.use(generator);
-      app.generate('travis', exists('.travis.yml', cb));
+      it('should run the default task using the `travis` generator alias', function(cb) {
+        app.use(generator);
+        app.generate('travis', exists('.travis.yml', cb));
+      });
     });
-  });
+  }
 
   describe('generator (API)', function() {
     it('should run the default task on the generator', function(cb) {
