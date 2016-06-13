@@ -10,8 +10,6 @@ Install with [npm](https://www.npmjs.com/):
 $ npm install --save generate-travis
 ```
 
-![Example of how to generate a gulpfile.js](demo.gif)
-
 ## tldr
 
 To use the CLI, install [generate][] if it isn't already installed:
