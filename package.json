@@ -10,7 +10,9 @@
   },
   "license": "MIT",
   "files": [
-    "index.js"
+    "generator.js",
+    "index.js",
+    "templates"
   ],
   "main": "index.js",
   "engines": {
@@ -29,7 +31,13 @@
     "mocha": "^2.4.5",
     "npm-install-global": "^0.1.1"
   },
-  "keywords": [],
+  "keywords": [
+    "generate",
+    "generateplugin",
+    "generator",
+    "plugin",
+    "travis"
+  ],
   "verb": {
     "toc": false,
     "layout": "generator",
@@ -39,9 +47,16 @@
     "plugins": [
       "gulp-format-md"
     ],
+    "related": {
+      "list": [
+        "generate-file",
+        "generate",
+        "generate-git"
+      ]
+    },
     "reflinks": [
-      "verb",
       "generate",
+      "verb",
       "verb-readme-generator"
     ],
     "lint": {
