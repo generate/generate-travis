@@ -1,6 +1,6 @@
 {
   "name": "generate-travis",
-  "description": "Generate a .travis.yml config file.",
+  "description": "Generate a .travis.yml file to the cwd or specified directory. Install globally and run with generate's CLI, or use as a component in your own generator.",
   "version": "0.1.0",
   "homepage": "https://github.com/generate/generate-travis",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
@@ -19,10 +19,15 @@
   "scripts": {
     "test": "mocha"
   },
-  "dependencies": {},
+  "dependencies": {
+    "is-valid-app": "^0.1.1"
+  },
   "devDependencies": {
-    "gulp-format-md": "*",
-    "mocha": "^2.4.5"
+    "delete": "^0.3.2",
+    "generate": "^0.7.3",
+    "gulp-format-md": "^0.1.9",
+    "mocha": "^2.4.5",
+    "npm-install-global": "^0.1.1"
   },
   "keywords": [],
   "verb": {
