@@ -31,15 +31,21 @@
   },
   "keywords": [],
   "verb": {
-    "layout": "default",
+    "toc": false,
+    "layout": "generator",
+    "tasks": [
+      "readme"
+    ],
     "plugins": [
       "gulp-format-md"
     ],
-    "related": {
-      "list": []
-    },
     "reflinks": [
-      "verb"
-    ]
+      "verb",
+      "generate",
+      "verb-readme-generator"
+    ],
+    "lint": {
+      "reflinks": true
+    }
   }
 }

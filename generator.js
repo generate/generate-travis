@@ -13,7 +13,7 @@ module.exports = function(app) {
    * ```sh
    * $ gen travis:travis-yml
    * ```
-   * @name travis-yml
+   * @name travis:travis-yml
    * @api public
    */
 
@@ -31,7 +31,7 @@ module.exports = function(app) {
    * ```sh
    * $ gen travis
    * ```
-   * @name default
+   * @name travis:default
    * @api public
    */
 
