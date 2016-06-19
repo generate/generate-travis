@@ -70,7 +70,7 @@ describe('generate-travis', function() {
     it('should extend tasks onto the instance', function() {
       app.use(generator);
       assert(app.tasks.hasOwnProperty('default'));
-      assert(app.tasks.hasOwnProperty('travis-yml'));
+      assert(app.tasks.hasOwnProperty('travis'));
     });
 
     it('should run the `default` task with .build', function(cb) {
@@ -83,14 +83,14 @@ describe('generate-travis', function() {
       app.generate('default', exists('.travis.yml', cb));
     });
 
-    it('should run the `travis-yml` task with .build', function(cb) {
+    it('should run the `travis` task with .build', function(cb) {
       app.use(generator);
-      app.build('travis-yml', exists('.travis.yml', cb));
+      app.build('travis', exists('.travis.yml', cb));
     });
 
-    it('should run the `travis-yml` task with .generate', function(cb) {
+    it('should run the `travis` task with .generate', function(cb) {
       app.use(generator);
-      app.generate('travis-yml', exists('.travis.yml', cb));
+      app.generate('travis', exists('.travis.yml', cb));
     });
   });
 
@@ -114,9 +114,9 @@ describe('generate-travis', function() {
       app.generate('travis', exists('.travis.yml', cb));
     });
 
-    it('should run the `travis-yml` task', function(cb) {
+    it('should run the `travis` task', function(cb) {
       app.register('travis', generator);
-      app.generate('travis:travis-yml', exists('.travis.yml', cb));
+      app.generate('travis:travis', exists('.travis.yml', cb));
     });
 
     it('should run the `default` task when defined explicitly', function(cb) {
@@ -147,11 +147,11 @@ describe('generate-travis', function() {
       app.generate('foo.travis:default', exists('.travis.yml', cb));
     });
 
-    it('should run the `travis:travis-yml` task', function(cb) {
+    it('should run the `travis:travis` task', function(cb) {
       app.register('foo', function(foo) {
         foo.register('travis', generator);
       });
-      app.generate('foo.travis:travis-yml', exists('.travis.yml', cb));
+      app.generate('foo.travis:travis', exists('.travis.yml', cb));
     });
 
     it('should work with nested sub-generators', function(cb) {

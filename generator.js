@@ -11,13 +11,13 @@ module.exports = function(app) {
    * Generates a `.travis.yml` file in the current working directory.
    *
    * ```sh
-   * $ gen travis:travis-yml
+   * $ gen travis:travis
    * ```
-   * @name travis:travis-yml
+   * @name travis:travis
    * @api public
    */
 
-  app.task('travis-yml', { silent: true }, function(cb) {
+  app.task('travis', { silent: true }, function(cb) {
     return app.src('travis.yml', {cwd: path.resolve(__dirname, 'templates')})
       .pipe(app.dest(function(file) {
         file.basename = '.travis.yml';
@@ -26,7 +26,7 @@ module.exports = function(app) {
   });
 
   /**
-   * Alias to enable running the [travis-yml](#travis-yml) task with the following command:
+   * Alias to enable running the [travis](#travis) task with the following command:
    *
    * ```sh
    * $ gen travis
@@ -35,5 +35,5 @@ module.exports = function(app) {
    * @api public
    */
 
-  app.task('default', { silent: true }, ['travis-yml']);
+  app.task('default', { silent: true }, ['travis']);
 };
