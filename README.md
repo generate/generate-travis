@@ -4,25 +4,35 @@ Generate a .travis.yml file to the cwd or specified directory. Install globally 
 
 ## What is generate?
 
-Generate is a new, open source developer framework for rapidly initializing and scaffolding out new code projects, offering an intuitive CLI, and a powerful and expressive API that makes it easy and enjoyable to use.
+Generate is a command line tool and developer framework for scaffolding out new GitHub projects using [generators](https://github.com/generate/generate/blob/master/docs/generators.md) and [tasks](https://github.com/generate/generate/blob/master/docs/tasks.md). Answers to prompts and the user's environment can be used to determine the templates, directories, files and contents to build. Support for [gulp](http://gulpjs.com), [base](https://github.com/node-base/base) and [assemble](https://github.com/assemble/assemble) plugins, and much more.
 
-Visit the [getting started guide](https://github.com/generate/getting-started) or the [generate](https://github.com/generate/generate) project and documentation to learn more.
+For more information about Generate:
+
+* Visit the [generate project](https://github.com/generate/generate)
+* Visit the [generate documentation](https://github.com/generate/generate/blob/master/docs/)
+* Find [generators on npm](https://www.npmjs.com/browse/keyword/generate-generator) (help us [author generators](https://github.com/generate/generate/blob/master/docs/micro-generators.md))
 
 ## tldr
 
-To use the CLI, install [generate](https://github.com/generate/generate) if it isn't already installed:
+**Install generate**
+
+To use [generate](https://github.com/generate/generate) from the command line, it must first be installed globally with npm:
 
 ```sh
 $ npm install --global generate
 ```
 
-Install the `generate-travis` generator:
+**Install `generate-travis`**
+
+Next, install this generator:
 
 ```sh
 $ npm install --global generate-travis
 ```
 
-Run `generate-travis` to generate a `.travis.yml` file:
+**Run**
+
+You should now be able to run this generator with the following command:
 
 ```sh
 $ gen travis
@@ -48,19 +58,19 @@ Once both [generate](https://github.com/generate/generate) and `generate-travis`
 $ gen travis
 ```
 
-### [travis:travis-yml](generator.js#L20)
+### [travis:travis](generator.js#L20)
 
 Generates a `.travis.yml` file in the current working directory.
 
 **Example**
 
 ```sh
-$ gen travis:travis-yml
+$ gen travis:travis
 ```
 
 ### [travis:default](generator.js#L38)
 
-Alias to enable running the [travis-yml](#travis-yml) task with the following command:
+Alias to enable running the [travis](#travis) task with the following command:
 
 **Example**
 
@@ -68,19 +78,7 @@ Alias to enable running the [travis-yml](#travis-yml) task with the following co
 $ gen travis
 ```
 
-## Docs
-
-### CLI
-
-**Installing the CLI**
-
-To run the `travis` generator from the command line, you'll need to install [generate](https://github.com/generate/generate) globally first. You can do that now with the following command:
-
-```sh
-$ npm i -g generate
-```
-
-This adds the `gen` command to your system path, allowing it to be run from any directory.
+## CLI
 
 **Help**
 
@@ -108,11 +106,11 @@ If completed successfully, you should see both `starting` and `finished` events 
 
 If you do not see one or both of those events, please [let us know about it](../../issues).
 
-### API
+## API
 
-This updater can also be used as a node.js library in your own updater. To do so you must first install generate-travis locally.
+### Install locally
 
-**Install**
+If you want to use `generate-travis` as a plugin or sub-generator to extend the features and settings in your own generator, you must first install it locally:
 
 Install with [npm](https://www.npmjs.com/):
 
@@ -120,72 +118,54 @@ Install with [npm](https://www.npmjs.com/):
 $ npm install --save generate-travis
 ```
 
-**Use as a plugin in your generator**
+### Use as a plugin
 
-Use as a plugin if you want to extend your own generator with the features, settings and tasks of generate-travis, as if they were created on your generator.
-
-In your `generator.js`:
+Use as a [plugin](https://github.com/generate/generate/blob/master/docs/plugins.md) if you want to extend your own generator with the features, settings and tasks of `generate-travis`, as if they were created on your generator:
 
 ```js
 module.exports = function(app) {
   app.use(require('generate-travis'));
-
-  // specify any tasks from generate-travis. Example:
-  app.task('default', ['travis']);
 };
 ```
 
-**Use as a sub-generator**
+Visit Generate's [plugin docs](https://github.com/generate/generate/blob/master/docs/plugins.md) to learn more about plugins.
 
-Use as a sub-generator if you want expose the features, settings and tasks from generate-travis on a _namespace_ in your generator.
+### Use as a sub-generator
 
-In your `generator.js`:
+Use as a [sub-generator](https://github.com/generate/generate/blob/master/docs/generators.md) if you want to add `generate-travis` to a  _namespace_ in your generator:
 
 ```js
 module.exports = function(app) {
-  // register the generate-travis generator (as a sub-generator with an arbitrary name)
+  // register the generate-travis with whatever name you want
   app.register('foo', require('generate-travis'));
-
-  app.task('minify', function(cb) {
-    // minify some stuff
-    cb();
-  });
-
-  // run the "default" task on generate-travis (aliased as `foo`), 
-  // then run the `minify` task defined in our generator
-  app.task('default', function(cb) {
-    app.generate(['foo:default', 'minify'], cb);
-  });
 };
 ```
 
-Tasks from `generate-travis` will be available on the `foo` namespace from the API and the command line. Continuing with the previous code example, to run the `default` task on `generate-travis`, you would run `gen foo:default` (or just `gen foo` if `foo` does not conflict with an existing task on your generator).
+Visit Generate's [sub-generator docs](https://github.com/generate/generate/blob/master/docs/sub-generators.md) to learn more about sub-generators.
 
-To learn more about namespaces and sub-generators, and how they work, [visit the getting started guide](https://github.com/generate/getting-started).
+## About
 
-## Related projects
+### Related projects
 
-You might also be interested in these projects:
-
-* [generate](https://www.npmjs.com/package/generate): Fast, composable, highly pluggable project generator with a user-friendly and expressive API. | [homepage](https://github.com/generate/generate "Fast, composable, highly pluggable project generator with a user-friendly and expressive API.")
 * [generate-file](https://www.npmjs.com/package/generate-file): Generator for generating a single file from a template. | [homepage](https://github.com/generate/generate-file "Generator for generating a single file from a template.")
 * [generate-git](https://www.npmjs.com/package/generate-git): Generator for initializing a git repository and adding first commit. | [homepage](https://github.com/generate/generate-git "Generator for initializing a git repository and adding first commit.")
+* [generate](https://www.npmjs.com/package/generate): Command line tool and developer framework for scaffolding out new GitHub projects. Generate offers the… [more](https://github.com/generate/generate) | [homepage](https://github.com/generate/generate "Command line tool and developer framework for scaffolding out new GitHub projects. Generate offers the robustness and configurability of Yeoman, the expressiveness and simplicity of Slush, and more powerful flow control and composability than either.")
 
-## Contributing
+### Contributing
 
-This document was generated by [verb-readme-generator](https://github.com/verbose/verb-readme-generator) (a [verb](https://github.com/verbose/verb) generator), please don't edit directly. Any changes to the readme must be made in [.verb.md](.verb.md). See [Building Docs](#building-docs).
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](../../issues/new).
 
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](../../issues/new). Or visit the [verb-readme-generator](https://github.com/verbose/verb-readme-generator) project to submit bug reports or pull requests for the readme layout template.
+### Building docs
 
-## Building docs
+_(This document was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme) (a [verb](https://github.com/verbose/verb) generator), please don't edit the readme directly. Any changes to the readme must be made in [.verb.md](.verb.md).)_
 
-Generate readme and API documentation with [verb](https://github.com/verbose/verb):
+To generate the readme and API documentation with [verb](https://github.com/verbose/verb):
 
 ```sh
-$ npm install -g verb verb-readme-generator && verb
+$ npm install -g verb verb-generate-readme && verb
 ```
 
-## Running tests
+### Running tests
 
 Install dev dependencies:
 
@@ -193,18 +173,18 @@ Install dev dependencies:
 $ npm install -d && npm test
 ```
 
-## Author
+### Author
 
 **Jon Schlinkert**
 
 * [github/jonschlinkert](https://github.com/jonschlinkert)
 * [twitter/jonschlinkert](http://twitter.com/jonschlinkert)
 
-## License
+### License
 
 Copyright © 2016, [Jon Schlinkert](https://github.com/jonschlinkert).
-Released under the [MIT license](LICENSE).
+Released under the [MIT license](https://github.com/generate/generate-travis/blob/master/LICENSE).
 
 ***
 
-_This file was generated by [verb](https://github.com/verbose/verb), v0.9.0, on June 13, 2016._
+_This file was generated by [verb](https://github.com/verbose/verb), v0.9.0, on July 16, 2016._
