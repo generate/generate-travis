@@ -3,7 +3,7 @@
 exports.json = {
   sudo: false,
   language: 'node_js',
-  node_js: [ '5', '4', '0.12', '0.10' ],
+  node_js: [ '6', '5', '4', '0.12', '0.10' ],
   matrix: {
     fast_finish: true,
     allow_failures: [
@@ -18,6 +18,7 @@ exports.yaml = [
   'sudo: false',
   'language: node_js',
   'node_js:',
+  '  - "6"',
   '  - "5"',
   '  - "4"',
   '  - "0.12"',

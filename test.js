@@ -41,7 +41,7 @@ describe('generate-travis', function() {
     app.data({
       author: {
         name: 'Jon Schlinkert',
-        username: 'jonschlnkert',
+        username: 'jonschlinkert',
         url: 'https://github.com/jonschlinkert'
       },
       project: {
