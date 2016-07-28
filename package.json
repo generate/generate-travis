@@ -1,7 +1,7 @@
 {
   "name": "generate-travis",
   "description": "Generate a .travis.yml file to the cwd or specified directory. Install globally and run with generate's CLI, or use as a component in your own generator.",
-  "version": "0.1.3",
+  "version": "0.1.2",
   "homepage": "https://github.com/generate/generate-travis",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "generate/generate-travis",
@@ -24,14 +24,14 @@
     "test": "mocha"
   },
   "dependencies": {
-    "is-valid-app": "^0.1.1"
+    "is-valid-app": "^0.2.0"
   },
   "devDependencies": {
     "delete": "^0.3.2",
-    "generate": "^0.7.3",
+    "generate": "^0.9.8",
     "gulp-format-md": "^0.1.9",
-    "mocha": "^2.4.5",
-    "npm-install-global": "^0.1.1"
+    "mocha": "^2.5.3",
+    "npm-install-global": "^0.1.2"
   },
   "keywords": [
     "boilerplate",
@@ -80,6 +80,7 @@
       "list": [
         "generate",
         "generate-file",
+        "generate-package",
         "generate-git"
       ]
     },
@@ -87,10 +88,9 @@
       "generate",
       "verb",
       "verb-readme-generator",
-      "gulp",
-      "base",
       "assemble",
-      "verb-generate-readme"
+      "base",
+      "gulp"
     ],
     "lint": {
       "reflinks": true

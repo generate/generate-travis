@@ -7,19 +7,19 @@ var assert = require('assert');
 var generate = require('generate');
 var npm = require('npm-install-global');
 var del = require('delete');
-var generator = require('./');
+var generator = require('..');
 var app;
 
-var cwd = path.resolve.bind(path, __dirname, 'actual');
+var actual = path.resolve.bind(path, __dirname, 'actual');
 
 function exists(name, cb) {
   return function(err) {
     if (err) return cb(err);
-    var filepath = cwd(name);
+    var filepath = actual(name);
     fs.stat(filepath, function(err, stat) {
       if (err) return cb(err);
       assert(stat);
-      del(path.dirname(filepath), cb);
+      del(actual(), cb);
     });
   };
 }
@@ -31,25 +31,17 @@ describe('generate-travis', function() {
     });
   }
 
+  before(function(cb) {
+    del(actual(), cb);
+  });
+  after(function(cb) {
+    del(actual(), cb);
+  });
+
   beforeEach(function() {
     app = generate({silent: true});
-    app.cwd = cwd();
-    app.option('dest', cwd());
-
-    // pre-populate template data to avoid prompts from `ask` helper
-    app.option('askWhen', 'not-answered');
-    app.data({
-      author: {
-        name: 'Jon Schlinkert',
-        username: 'jonschlinkert',
-        url: 'https://github.com/jonschlinkert'
-      },
-      project: {
-        name: 'foo',
-        description: 'bar',
-        version: '0.1.0'
-      }
-    });
+    app.option('dest', actual());
+    app.cwd = actual();
   });
 
   describe('plugin', function() {
@@ -66,30 +58,31 @@ describe('generate-travis', function() {
       assert.equal(count, 1);
       cb();
     });
+  });
+
+  describe('tasks', function() {
+    beforeEach(function() {
+      app.use(generator);
+    });
 
     it('should extend tasks onto the instance', function() {
-      app.use(generator);
       assert(app.tasks.hasOwnProperty('default'));
       assert(app.tasks.hasOwnProperty('travis'));
     });
 
     it('should run the `default` task with .build', function(cb) {
-      app.use(generator);
       app.build('default', exists('.travis.yml', cb));
     });
 
     it('should run the `default` task with .generate', function(cb) {
-      app.use(generator);
       app.generate('default', exists('.travis.yml', cb));
     });
 
     it('should run the `travis` task with .build', function(cb) {
-      app.use(generator);
       app.build('travis', exists('.travis.yml', cb));
     });
 
     it('should run the `travis` task with .generate', function(cb) {
-      app.use(generator);
       app.generate('travis', exists('.travis.yml', cb));
     });
   });
