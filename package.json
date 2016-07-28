@@ -12,6 +12,8 @@
   "files": [
     "generator.js",
     "index.js",
+    "LICENSE",
+    "README.md",
     "templates"
   ],
   "main": "index.js",
@@ -32,11 +34,38 @@
     "npm-install-global": "^0.1.1"
   },
   "keywords": [
+    "boilerplate",
+    "build",
+    "cli",
+    "cli-app",
+    "command-line",
+    "create",
+    "dev",
+    "development",
+    "framework",
+    "front",
+    "frontend",
     "generate",
+    "generate-generator",
+    "generate-plugin",
+    "generategenerator",
     "generateplugin",
     "generator",
+    "init",
+    "initialize",
+    "new",
     "plugin",
-    "travis"
+    "project",
+    "projects",
+    "scaffold",
+    "scaffolder",
+    "scaffolding",
+    "template",
+    "templates",
+    "travis",
+    "webapp",
+    "yeoman",
+    "yo"
   ],
   "verb": {
     "toc": false,
