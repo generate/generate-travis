@@ -1,9 +1,14 @@
 {
   "name": "generate-travis",
   "description": "Generate a .travis.yml file to the cwd or specified directory. Install globally and run with generate's CLI, or use as a component in your own generator.",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "homepage": "https://github.com/generate/generate-travis",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "contributors": [
+    "Brian Woodward <brian.woodward@gmail.com> (https://github.com/doowb)",
+    "Charlike Mike Reagent (http://www.tunnckocore.tk)",
+    "Jon Schlinkert <jon.schlinkert@sellside.com> (http://twitter.com/jonschlinkert)"
+  ],
   "repository": "generate/generate-travis",
   "bugs": {
     "url": "https://github.com/generate/generate-travis/issues"
@@ -12,8 +17,6 @@
   "files": [
     "generator.js",
     "index.js",
-    "LICENSE",
-    "README.md",
     "templates"
   ],
   "main": "index.js",
@@ -80,17 +83,17 @@
       "list": [
         "generate",
         "generate-file",
-        "generate-package",
-        "generate-git"
+        "generate-git",
+        "generate-package"
       ]
     },
     "reflinks": [
-      "generate",
-      "verb",
-      "verb-readme-generator",
       "assemble",
       "base",
-      "gulp"
+      "generate",
+      "gulp",
+      "verb",
+      "verb-generate-readme"
     ],
     "lint": {
       "reflinks": true
