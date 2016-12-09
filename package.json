@@ -1,7 +1,7 @@
 {
   "name": "generate-travis",
   "description": "Generate a .travis.yml file to the cwd or specified directory. Install globally and run with generate's CLI, or use as a component in your own generator.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "homepage": "https://github.com/generate/generate-travis",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "contributors": [
